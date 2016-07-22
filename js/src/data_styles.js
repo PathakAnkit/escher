@@ -72,6 +72,8 @@ function import_and_check(data, name, all_reactions) {
             return null;
         if (data.length==2)
             return null;
+        if (data.length==3)
+            return null;
         return console.warn('Bad data style: ' + name);
     };
     check();
@@ -151,9 +153,11 @@ function float_for_data(d, styles, compare_style) {
             return check_finite(log2_fold(fs[0], fs[1], take_abs));
         }
     } else {
-        throw new Error('Data array must be of length 1 or 2');
+        var fs = d.map(_parse_float_or_null);
+        return abs(fs[0], take_abs);
+        /*throw new Error('Data array must be of length 1 or 2');*/
     }
-    throw new Error('Bad data compare_style: ' + compare_style);
+    /*throw new Error('Bad data compare_style: ' + compare_style);*/
 
     // definitions
     function check_finite(x) {
@@ -310,7 +314,7 @@ function csv_converter(csv_rows) {
     // count rows
     var c = csv_rows[0].length,
         converted = [];
-    if (c < 2 || c > 3)
+    if (c < 3 || c > 4)
         throw new Error('CSV file must have 2 or 3 columns');
     // set up rows
     for (var i = 1; i < c; i++) {
