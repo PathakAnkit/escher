@@ -410,6 +410,7 @@ function array_to_object(arr) {
             }
         }
     }
+    console.log('Data Object');
     console.log(obj);
     return obj;
 }

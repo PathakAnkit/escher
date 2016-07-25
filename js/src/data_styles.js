@@ -154,10 +154,12 @@ function float_for_data(d, styles, compare_style) {
         }
     } else {
         var fs = d.map(_parse_float_or_null);
+        console.log('Float for Data');
+        console.log(fs[0]);
         return abs(fs[0], take_abs);
         /*throw new Error('Data array must be of length 1 or 2');*/
     }
-    /*throw new Error('Bad data compare_style: ' + compare_style);*/
+    throw new Error('Bad data compare_style: ' + compare_style);
 
     // definitions
     function check_finite(x) {
@@ -314,8 +316,10 @@ function csv_converter(csv_rows) {
     // count rows
     var c = csv_rows[0].length,
         converted = [];
-    if (c < 3 || c > 4)
-        throw new Error('CSV file must have 2 or 3 columns');
+    console.log('CSV');
+    console.log(csv_rows);
+    /*if (c < 2 || c > 3)
+        throw new Error('CSV file must have 2 or 3 columns');*/
     // set up rows
     for (var i = 1; i < c; i++) {
         converted[i - 1] = {};
