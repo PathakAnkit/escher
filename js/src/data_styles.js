@@ -137,7 +137,6 @@ function float_for_data(d, styles, compare_style) {
         var f = _parse_float_or_null(d[0]);
         if (f === null)
             return null;
-        console.log(f);
         return abs(f, take_abs);
     } else if (d.length==2) { // 2 sets
         // 2 null
@@ -155,9 +154,7 @@ function float_for_data(d, styles, compare_style) {
         }
     } else {
         var fs = d.map(_parse_float_or_null);
-        console.log(fs);
-        console.log(fs[0]);
-        return abs(fs[0], take_abs);
+        return abs(fs[1], take_abs);
         /*throw new Error('Data array must be of length 1 or 2');*/
     }
     throw new Error('Bad data compare_style: ' + compare_style);
@@ -301,7 +298,7 @@ function text_for_data(d, f) {
         return t;
     } else {
         var format = (f === null ? RETURN_ARG : d3.format('.3g'));
-        return null_or_d(d[0], format);
+        return null_or_d(d[1], format);
     }
     return '';
 
