@@ -460,3 +460,8 @@ resizes. */
 	  display: none;
   }
 }
+/* Slider */
+.escher-container .slider-container {
+  display: block;
+  text-align: center;
+}
