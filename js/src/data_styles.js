@@ -72,8 +72,6 @@ function import_and_check(data, name, all_reactions) {
             return null;
         if (data.length==2)
             return null;
-        if (data.length==3)
-            return null;
         return console.warn('Bad data style: ' + name);
     };
     check();*/
@@ -161,10 +159,6 @@ function float_for_data(d, styles, compare_style) {
                 return null;
         }
         return abs(fs[0], take_abs);
-    } else {
-        var fs = d.map(_parse_float_or_null);
-        return abs(fs[1], take_abs);
-        /*throw new Error('Data array must be of length 1 or 2');*/
     }
     throw new Error('Bad data compare_style: ' + compare_style);
 
@@ -309,9 +303,6 @@ function text_for_data(d, f) {
     else {
         var format = (f === null ? RETURN_ARG : d3.format('.3g'));
         return null_or_d(d[0], format);
-    } else {
-        var format = (f === null ? RETURN_ARG : d3.format('.3g'));
-        return null_or_d(d[1], format);
     }
     return '';
 
